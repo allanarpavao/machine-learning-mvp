@@ -1,0 +1,30 @@
+# Dependências
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Variáveis de ambiente
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Banco de dados
+*.db
+*.sqlite
+
+# Sistema
+.DS_Store
+
+# Docker artefatos
+.docker/
+.dockerignore
+
+# Build outputs
+*.tar
+*.tar.gz
+*.tar.bz2
