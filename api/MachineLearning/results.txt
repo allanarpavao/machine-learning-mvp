@@ -1,0 +1,99 @@
+linha base:
+LR: 0.634243 (0.018891)
+KNN: 0.584692 (0.030077)
+CART: 0.669542 (0.020680)
+NB: 0.673940 (0.012629)
+SVM: 0.332551 (0.001607)
+Bagging: 0.754084 (0.012208)
+RF: 0.752292 (0.011702)
+ET: 0.747188 (0.013271)
+Ada: 0.739815 (0.017615)
+GB: 0.758562 (0.011147)
+Voting: 0.630461 (0.017038)
+
+
+
+Comparaçao (3min 45s)
+LR-orig: 0.634 (0.019)
+KNN-orig: 0.585 (0.030)
+CART-orig: 0.670 (0.021)
+NB-orig: 0.674 (0.013)
+SVM-orig: 0.333 (0.002)
+Bag-orig: 0.754 (0.012)
+RF-orig: 0.752 (0.012)
+ET-orig: 0.747 (0.013)
+Ada-orig: 0.740 (0.018)
+GB-orig: 0.759 (0.011)
+Vot-orig: 0.630 (0.017)
+LR-padr: 0.743 (0.013)
+KNN-padr: 0.683 (0.016)
+CART-padr: 0.679 (0.023)
+NB-padr: 0.670 (0.014)
+SVM-padr: 0.743 (0.014)
+Bag-padr: 0.754 (0.021)
+RF-padr: 0.749 (0.020)
+ET-padr: 0.753 (0.012)
+Ada-padr: 0.740 (0.018)
+GB-padr: 0.759 (0.011)
+Vot-padr: 0.747 (0.011)
+LR-norm: 0.737 (0.015)
+KNN-norm: 0.655 (0.019)
+CART-norm: 0.672 (0.020)
+NB-norm: 0.670 (0.014)
+SVM-norm: 0.729 (0.015)
+Bag-norm: 0.758 (0.015)
+RF-norm: 0.750 (0.011)
+ET-norm: 0.757 (0.019)
+Ada-norm: 0.740 (0.018)
+GB-norm: 0.758 (0.012)
+Vot-norm: 0.736 (0.017)
+
+
+
+
+ Original      Padronizado      Normalizado
+Modelo                                                    
+LR       0.6342 (0.0189)  0.7433 (0.0125)  0.7371 (0.0148)
+KNN      0.5847 (0.0301)  0.6827 (0.0157)  0.6548 (0.0194)
+CART     0.6695 (0.0207)  0.6786 (0.0225)  0.6721 (0.0201)
+NB       0.6739 (0.0126)  0.6697 (0.0136)  0.6697 (0.0136)
+SVM      0.3326 (0.0016)  0.7425 (0.0144)  0.7290 (0.0150)
+Bagging  0.7541 (0.0122)  0.7539 (0.0206)  0.7583 (0.0148)
+RF       0.7523 (0.0117)  0.7492 (0.0205)  0.7502 (0.0114)
+ET       0.7472 (0.0133)  0.7533 (0.0120)  0.7570 (0.0195)
+Ada      0.7398 (0.0176)  0.7398 (0.0176)  0.7398 (0.0176)
+GB       0.7586 (0.0111)  0.7590 (0.0114)  0.7577 (0.0120)
+Voting   0.6305 (0.0170)  0.7470 (0.0114)  0.7363 (0.0169)
+
+
+Grid Search --> 72 min
+Modelo: SVM-norm - Melhor: 0.754005 usando {'SVM__C': 100, 'SVM__gamma': 1, 'SVM__kernel': 'linear'}
+Modelo: Bagging-orig - Melhor: 0.754490 usando {}
+Modelo: RF-orig - Melhor: 0.757077 usando {'RF__max_depth': 20, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 10, 'RF__n_estimators': 200}
+Modelo: ET-orig - Melhor: 0.756804 usando {'ET__max_depth': 30, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: Ada-orig - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-orig - Melhor: 0.761002 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 5, 'GB__n_estimators': 100}
+Modelo: Voting-orig - Melhor: 0.639819 usando {}
+Modelo: Voting-padr - Melhor: 0.740127 usando {}
+Modelo: Voting-norm - Melhor: 0.727934 usando {}
+Modelo: LR-orig - Melhor: 0.540997 usando {'LR__C': 0.1, 'LR__solver': 'saga'}
+Modelo: LR-padr - Melhor: 0.744138 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.744289 usando {'LR__C': 10, 'LR__solver': 'saga'}
+Modelo: KNN-orig - Melhor: 0.633691 usando {'KNN__metric': 'manhattan', 'KNN__n_neighbors': 11}
+Modelo: KNN-padr - Melhor: 0.682657 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: KNN-norm - Melhor: 0.660544 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: CART-orig - Melhor: 0.718416 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: NB-orig - Melhor: 0.682239 usando {'NB__var_smoothing': 1e-08}
+Modelo: NB-padr - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-orig - Melhor: 0.735360 usando {'SVM__C': 0.1, 'SVM__gamma': 1, 'SVM__kernel': 'linear'}
+Modelo: SVM-padr - Melhor: 0.755893 usando {'SVM__C': 100, 'SVM__gamma': 1, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.754005 usando {'SVM__C': 100, 'SVM__gamma': 1, 'SVM__kernel': 'linear'}
+Modelo: Bagging-orig - Melhor: 0.758085 usando {}
+Modelo: RF-orig - Melhor: 0.754893 usando {'RF__max_depth': None, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 200}
+Modelo: ET-orig - Melhor: 0.756381 usando {'ET__max_depth': None, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: Ada-orig - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-orig - Melhor: 0.764279 usando {'GB__learning_rate': 0.2, 'GB__max_depth': 5, 'GB__n_estimators': 50}
+Modelo: Voting-orig - Melhor: 0.640725 usando {}
+Modelo: Voting-padr - Melhor: 0.742651 usando {}
+Modelo: Voting-norm - Melhor: 0.728163 usando {}
