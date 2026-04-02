@@ -97,3 +97,142 @@ Modelo: GB-orig - Melhor: 0.764279 usando {'GB__learning_rate': 0.2, 'GB__max_de
 Modelo: Voting-orig - Melhor: 0.640725 usando {}
 Modelo: Voting-padr - Melhor: 0.742651 usando {}
 Modelo: Voting-norm - Melhor: 0.728163 usando {}
+
+
+###### f1_score
+Modelo: LR-padr - Melhor: 0.744138 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.744289 usando {'LR__C': 10, 'LR__solver': 'saga'}
+Modelo: KNN-padr - Melhor: 0.682657 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: KNN-norm - Melhor: 0.660544 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: CART-padr - Melhor: 0.718895 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 4, 'CART__min_samples_split': 10}
+Modelo: CART-norm - Melhor: 0.719859 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: NB-padr - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-padr - Melhor: 0.755893 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.754005 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: Bagging-padr - Melhor: 0.760950 usando {}
+Modelo: Bagging-norm - Melhor: 0.759032 usando {}
+Modelo: RF-padr - Melhor: 0.758155 usando {'RF__max_depth': 20, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 100}
+Modelo: RF-norm - Melhor: 0.754760 usando {'RF__max_depth': 30, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 100}
+Modelo: ET-padr - Melhor: 0.758115 usando {'ET__max_depth': 30, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: ET-norm - Melhor: 0.758970 usando {'ET__max_depth': None, 'ET__max_features': 'log2', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 100}
+Modelo: Ada-padr - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: Ada-norm - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-padr - Melhor: 0.760205 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 200}
+Modelo: GB-norm - Melhor: 0.762296 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 5, 'GB__n_estimators': 50}
+Modelo: Voting-padr - Melhor: 0.741802 usando {}
+Modelo: Voting-norm - Melhor: 0.726752 usando {}
+Modelo: LR-padr - Melhor: 0.744138 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.743870 usando {'LR__C': 100, 'LR__solver': 'saga'}
+Modelo: KNN-padr - Melhor: 0.682657 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: KNN-norm - Melhor: 0.660544 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: CART-padr - Melhor: 0.718076 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 4, 'CART__min_samples_split': 5}
+Modelo: CART-norm - Melhor: 0.718088 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: NB-padr - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-padr - Melhor: 0.755893 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.754005 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: Bagging-padr - Melhor: 0.755838 usando {}
+Modelo: Bagging-norm - Melhor: 0.751876 usando {}
+Modelo: RF-padr - Melhor: 0.756875 usando {'RF__max_depth': 20, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 200}
+Modelo: RF-norm - Melhor: 0.758234 usando {'RF__max_depth': 30, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 100}
+Modelo: ET-padr - Melhor: 0.755419 usando {'ET__max_depth': 30, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 100}
+Modelo: ET-norm - Melhor: 0.753828 usando {'ET__max_depth': None, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: Ada-padr - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: Ada-norm - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-padr - Melhor: 0.761720 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 5, 'GB__n_estimators': 100}
+Modelo: GB-norm - Melhor: 0.763374 usando {'GB__learning_rate': 0.2, 'GB__max_depth': 5, 'GB__n_estimators': 50}
+Modelo: Voting-padr - Melhor: 0.743707 usando {}
+Modelo: Voting-norm - Melhor: 0.728449 usando {}
+Modelo: LR-padr - Melhor: 0.744138 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.744289 usando {'LR__C': 10, 'LR__solver': 'saga'}
+Modelo: KNN-padr - Melhor: 0.682657 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: KNN-norm - Melhor: 0.660544 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 5}
+Modelo: CART-padr - Melhor: 0.717643 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: CART-norm - Melhor: 0.718662 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: NB-padr - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.670177 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-padr - Melhor: 0.755893 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.754005 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: Bagging-padr - Melhor: 0.754539 usando {}
+Modelo: Bagging-norm - Melhor: 0.752641 usando {}
+Modelo: RF-padr - Melhor: 0.757114 usando {'RF__max_depth': 30, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 100}
+Modelo: RF-norm - Melhor: 0.755534 usando {'RF__max_depth': 30, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 10, 'RF__n_estimators': 100}
+Modelo: ET-padr - Melhor: 0.758535 usando {'ET__max_depth': None, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: ET-norm - Melhor: 0.754444 usando {'ET__max_depth': None, 'ET__max_features': 'log2', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 50}
+Modelo: Ada-padr - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: Ada-norm - Melhor: 0.731999 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-padr - Melhor: 0.761646 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 200}
+Modelo: GB-norm - Melhor: 0.760866 usando {'GB__learning_rate': 0.2, 'GB__max_depth': 5, 'GB__n_estimators': 50}
+Modelo: Voting-padr - Melhor: 0.740603 usando {}
+Modelo: Voting-norm - Melhor: 0.730585 usando {}
+
+
+
+########### acurácia
+Modelo: LR-padr - Melhor: 0.761794 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.762359 usando {'LR__C': 10, 'LR__solver': 'saga'}
+Modelo: KNN-padr - Melhor: 0.712632 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 15}
+Modelo: KNN-norm - Melhor: 0.695112 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 17}
+Modelo: CART-padr - Melhor: 0.723081 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: CART-norm - Melhor: 0.721670 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 4, 'CART__min_samples_split': 5}
+Modelo: NB-padr - Melhor: 0.685227 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.685227 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-padr - Melhor: 0.769989 usando {'SVM__C': 10, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.768575 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: Bagging-padr - Melhor: 0.766879 usando {}
+Modelo: Bagging-norm - Melhor: 0.762921 usando {}
+Modelo: RF-padr - Melhor: 0.771964 usando {'RF__max_depth': None, 'RF__max_features': 'log2', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 100}
+Modelo: RF-norm - Melhor: 0.773941 usando {'RF__max_depth': None, 'RF__max_features': 'log2', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 5, 'RF__n_estimators': 50}
+Modelo: ET-padr - Melhor: 0.777050 usando {'ET__max_depth': 20, 'ET__max_features': 'log2', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 5, 'ET__n_estimators': 100}
+Modelo: ET-norm - Melhor: 0.777333 usando {'ET__max_depth': 30, 'ET__max_features': 'log2', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: Ada-padr - Melhor: 0.748228 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: Ada-norm - Melhor: 0.748228 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-padr - Melhor: 0.773661 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 200}
+Modelo: GB-norm - Melhor: 0.772813 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 200}
+Modelo: Voting-padr - Melhor: 0.765184 usando {}
+Modelo: Voting-norm - Melhor: 0.752750 usando {}
+Modelo: LR-padr - Melhor: 0.761794 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.762641 usando {'LR__C': 10, 'LR__solver': 'saga'}
+Modelo: KNN-padr - Melhor: 0.712632 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 15}
+Modelo: KNN-norm - Melhor: 0.695112 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 17}
+Modelo: CART-padr - Melhor: 0.723362 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 10}
+Modelo: CART-norm - Melhor: 0.723647 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 4, 'CART__min_samples_split': 2}
+Modelo: NB-padr - Melhor: 0.685227 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.685227 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-padr - Melhor: 0.769989 usando {'SVM__C': 10, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.768575 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: Bagging-padr - Melhor: 0.767162 usando {}
+Modelo: Bagging-norm - Melhor: 0.761796 usando {}
+Modelo: RF-padr - Melhor: 0.774223 usando {'RF__max_depth': 30, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 2, 'RF__n_estimators': 200}
+Modelo: RF-norm - Melhor: 0.775073 usando {'RF__max_depth': 30, 'RF__max_features': 'log2', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 5, 'RF__n_estimators': 100}
+Modelo: ET-padr - Melhor: 0.775357 usando {'ET__max_depth': None, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 5, 'ET__n_estimators': 200}
+Modelo: ET-norm - Melhor: 0.775357 usando {'ET__max_depth': None, 'ET__max_features': 'log2', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: Ada-padr - Melhor: 0.748228 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: Ada-norm - Melhor: 0.748228 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-padr - Melhor: 0.772813 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 100}
+Modelo: GB-norm - Melhor: 0.772530 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 200}
+Modelo: Voting-padr - Melhor: 0.761229 usando {}
+Modelo: Voting-norm - Melhor: 0.753880 usando {}
+Modelo: LR-padr - Melhor: 0.761794 usando {'LR__C': 1, 'LR__solver': 'saga'}
+Modelo: LR-norm - Melhor: 0.762641 usando {'LR__C': 10, 'LR__solver': 'saga'}
+Modelo: KNN-padr - Melhor: 0.712632 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 15}
+Modelo: KNN-norm - Melhor: 0.695112 usando {'KNN__metric': 'euclidean', 'KNN__n_neighbors': 17}
+Modelo: CART-padr - Melhor: 0.723647 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 2}
+Modelo: CART-norm - Melhor: 0.723929 usando {'CART__max_depth': 10, 'CART__min_samples_leaf': 1, 'CART__min_samples_split': 5}
+Modelo: NB-padr - Melhor: 0.685227 usando {'NB__var_smoothing': 1e-09}
+Modelo: NB-norm - Melhor: 0.685227 usando {'NB__var_smoothing': 1e-09}
+Modelo: SVM-padr - Melhor: 0.769989 usando {'SVM__C': 10, 'SVM__kernel': 'linear'}
+Modelo: SVM-norm - Melhor: 0.768575 usando {'SVM__C': 100, 'SVM__kernel': 'linear'}
+Modelo: Bagging-padr - Melhor: 0.764338 usando {}
+Modelo: Bagging-norm - Melhor: 0.765186 usando {}
+Modelo: RF-padr - Melhor: 0.774507 usando {'RF__max_depth': 20, 'RF__max_features': 'sqrt', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 10, 'RF__n_estimators': 200}
+Modelo: RF-norm - Melhor: 0.775355 usando {'RF__max_depth': 30, 'RF__max_features': 'log2', 'RF__min_samples_leaf': 1, 'RF__min_samples_split': 10, 'RF__n_estimators': 100}
+Modelo: ET-padr - Melhor: 0.776766 usando {'ET__max_depth': None, 'ET__max_features': 'sqrt', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 2, 'ET__n_estimators': 200}
+Modelo: ET-norm - Melhor: 0.776202 usando {'ET__max_depth': 30, 'ET__max_features': 'log2', 'ET__min_samples_leaf': 1, 'ET__min_samples_split': 5, 'ET__n_estimators': 200}
+Modelo: Ada-padr - Melhor: 0.748228 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: Ada-norm - Melhor: 0.748228 usando {'Ada__learning_rate': 1, 'Ada__n_estimators': 200}
+Modelo: GB-padr - Melhor: 0.772248 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 3, 'GB__n_estimators': 200}
+Modelo: GB-norm - Melhor: 0.775072 usando {'GB__learning_rate': 0.1, 'GB__max_depth': 5, 'GB__n_estimators': 50}
+Modelo: Voting-padr - Melhor: 0.761794 usando {}
+Modelo: Voting-norm - Melhor: 0.756705 usando {}
