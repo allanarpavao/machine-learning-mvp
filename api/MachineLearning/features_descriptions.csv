@@ -1,4 +1,4 @@
-,tipo,range,descricao
+atributos,tipo,range,descricao
 Father's qualification,int,1–34,Nível de educação do pai
 Mother's qualification,int,1–29,Nível de educação da mãe
 Father's occupation,int,1–46,Ocupação profissional do pai (código categórico)
