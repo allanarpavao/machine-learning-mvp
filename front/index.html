@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGA - Sistema de Gestão Acadêmica | Predição</title>
+    <!-- Fonte moderna para visual limpo -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="logo">SGA <span>Analytics</span></div>
+        <div class="user-profile">Secretaria Acadêmica</div>
+    </header>
+
+    <main class="container">
+        <section class="card form-section">
+            <h2>Análise de Risco do Aluno</h2>
+            <p class="subtitle">Insira os dados do aluno para prever a situação acadêmica final.</p>
+            
+            <form id="predictionForm">
+                <div class="form-grid">
+                    <!-- Variáveis Demográficas -->
+                    <div class="input-group">
+                        <label for="ageAtEnrollment">Idade na Matrícula</label>
+                        <input type="number" id="ageAtEnrollment" name="ageAtEnrollment" required min="15" max="100" placeholder="Ex: 19">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="gender">Gênero</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Selecione...</option>
+                            <option value="1">Masculino</option>
+                            <option value="0">Feminino</option>
+                        </select>
+                    </div>
+
+                    <!-- Variáveis Socioeconômicas -->
+                    <div class="input-group">
+                        <label for="scholarshipHolder">Bolsista?</label>
+                        <select id="scholarshipHolder" name="scholarshipHolder" required>
+                            <option value="1">Sim</option>
+                            <option value="0" selected>Não</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="tuitionUpToDate">Mensalidade em Dia?</label>
+                        <select id="tuitionUpToDate" name="tuitionUpToDate" required>
+                            <option value="1" selected>Sim</option>
+                            <option value="0">Não</option>
+                        </select>
+                    </div>
+
+                    <!-- Variáveis Acadêmicas (Exemplo) -->
+                    <div class="input-group">
+                        <label for="curricUnits1stSem">Disciplinas Aprovadas (1º Sem)</label>
+                        <input type="number" id="curricUnits1stSem" name="curricUnits1stSem" required min="0" placeholder="Ex: 5">
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="admissionGrade">Nota de Admissão</label>
+                        <input type="number" step="0.1" id="admissionGrade" name="admissionGrade" required min="0" max="200" placeholder="Ex: 120.5">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    <span id="btnText">Realizar Predição</span>
+                    <span id="btnLoader" class="loader hidden"></span>
+                </button>
+            </form>
+        </section>
+
+        <!-- Seção de Resultado (Oculta por padrão) -->
+        <section id="resultSection" class="card result-section hidden">
+            <h3>Resultado da Predição</h3>
+            <div id="predictionBadge" class="badge"></div>
+            <p id="predictionMessage" class="message"></p>
+            <button class="btn-secondary" onclick="resetForm()">Nova Consulta</button>
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
