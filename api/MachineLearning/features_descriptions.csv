@@ -18,18 +18,18 @@ Application order,int,1–9,Ordem de preferência do curso na candidatura
 Course,int,1–17,Curso em que o aluno está matriculado (código categórico)
 Daytime/evening attendance,int,0–1,"Turno do curso (0=Noturno, 1=Diurno)"
 Previous qualification,int,1–17,Qualificação anterior do aluno antes de ingressar (código categórico)
-Curricular units 1st sem (credited),int,0–20,Unidades curriculares creditadas no 1º semestre
-Curricular units 1st sem (enrolled),int,0–26,Unidades curriculares matriculadas no 1º semestre
+Curricular units 1st sem (credited),int,0–20,Disciplinas creditadas no 1º semestre
+Curricular units 1st sem (enrolled),int,0–26,Disciplinas matriculadas no 1º semestre
 Curricular units 1st sem (evaluations),int,0–45,Número de avaliações realizadas no 1º semestre
-Curricular units 1st sem (approved),int,0–26,Unidades curriculares aprovadas no 1º semestre
-Curricular units 1st sem (grade),float,0.000–18.875,Média de notas das unidades curriculares no 1º semestre
-Curricular units 1st sem (without evaluations),int,0–12,Unidades curriculares sem avaliação no 1º semestre
-Curricular units 2nd sem (credited),int,0–19,Unidades curriculares creditadas no 2º semestre
-Curricular units 2nd sem (enrolled),int,0–23,Unidades curriculares matriculadas no 2º semestre
+Curricular units 1st sem (approved),int,0–26,Disciplinas aprovadas no 1º semestre
+Curricular units 1st sem (grade),float,0.000–18.875,Média de notas das Disciplinas no 1º semestre
+Curricular units 1st sem (without evaluations),int,0–12,Disciplinas sem avaliação no 1º semestre
+Curricular units 2nd sem (credited),int,0–19,Disciplinas creditadas no 2º semestre
+Curricular units 2nd sem (enrolled),int,0–23,Disciplinas matriculadas no 2º semestre
 Curricular units 2nd sem (evaluations),int,0–33,Número de avaliações realizadas no 2º semestre
-Curricular units 2nd sem (approved),int,0–20,Unidades curriculares aprovadas no 2º semestre
-Curricular units 2nd sem (grade),float,0.000–18.571,Média de notas das unidades curriculares no 2º semestre
-Curricular units 2nd sem (without evaluations),int,0–12,Unidades curriculares sem avaliação no 2º semestre
+Curricular units 2nd sem (approved),int,0–20,Disciplinas aprovadas no 2º semestre
+Curricular units 2nd sem (grade),float,0.000–18.571,Média de notas das Disciplinas no 2º semestre
+Curricular units 2nd sem (without evaluations),int,0–12,Disciplinas sem avaliação no 2º semestre
 Unemployment rate,float,7.6–16.2,Taxa de desemprego no período de matrícula do aluno (%)
 Inflation rate,float,-0.8–3.7,Taxa de inflação no período de matrícula do aluno (%)
 GDP,float,-4.1–3.5,Produto Interno Bruto no período de matrícula do aluno

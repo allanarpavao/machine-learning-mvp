@@ -14,46 +14,48 @@ class Estudantes(Base):
     __tablename__ = "estudantes"
     
     matricula: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False)
-    father_qualification = mapped_column() # Father's qualification,int,1–34,Nível de educa
-    mother_qualification = mapped_column() # Mother's qualification,int,1–29,Nível de educa
-    father_ocupation = mapped_column() # Father's occupation,int,1–46,Ocupação profissi
-    mother_ocupation = mapped_column() # Mother's occupation,int,1–32,Ocupação profissi
-    education_special_needs = mapped_column()
-    debtor = mapped_column()
-    tuiton_fees_up_to_date = mapped_column()
-    scholarship_holder = mapped_column()
-    marital_status = mapped_column()
-    nationality = mapped_column()
     
-    displaced = mapped_column()
-    gender = mapped_column()
-    age_at_enrollment = mapped_column()
-    international = mapped_column()
+    # Dados familiares
+    father_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nível de educação do pai (1–34)")
+    mother_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nível de educação da mãe (1–29)")
+    father_ocupation: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ocupação profissional do pai (1–46)")
+    mother_ocupation: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ocupação profissional da mãe (1–32)")
     
-    application_mode = mapped_column()
-    application_order = mapped_column()
-    course = mapped_column()
-    school_time = mapped_column()
-    previous_qualification = mapped_column()
-    curricular_units_1st_sem_credited = mapped_column()
-    curricular_units_1st_sem_enrolled = mapped_column()
-    curricular_units_1st_sem_evaluations = mapped_column()
-    curricular_units_1st_sem_approved = mapped_column()
-    curricular_units_1st_sem_grade = mapped_column()
-    curricular_units_1st_sem_without_evaluations = mapped_column()
-    curricular_units_2nd_sem_credited = mapped_column()
-    curricular_units_2nd_sem_enrolled = mapped_column()
-    curricular_units_2nd_sem_evaluations = mapped_column()
-    curricular_units_2nd_sem_approved = mapped_column()
-    curricular_units_2nd_sem_grade = mapped_column()
-    curricular_units_2nd_sem_without_evaluations = mapped_column()
+    # Informações Pessoais
+    education_special_needs: Mapped[int] = mapped_column(Integer, nullable=False, doc="Necessidades educacionais especiais (0=Não, 1=Sim)")
+    debtor: Mapped[int] = mapped_column(Integer, nullable=False, doc="Inadimplente (0=Não, 1=Sim)")
+    tuiton_fees_up_to_date: Mapped[int] = mapped_column(Integer, nullable=False, doc="Mensalidades em dia (0=Não, 1=Sim)")
+    scholarship_holder: Mapped[int] = mapped_column(Integer, nullable=False, doc="Bolsista (0=Não, 1=Sim)")
+    marital_status: Mapped[int] = mapped_column(Integer, nullable=False, doc="Estado civil do aluno (1–6)")
+    nationality: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nacionalidade do aluno (1–21)")
+    displaced: Mapped[int] = mapped_column(Integer, nullable=False, doc="Deslocado de outra região (0=Não, 1=Sim)")
+    gender: Mapped[int] = mapped_column(Integer, nullable=False, doc="Gênero do aluno (0=Feminino, 1=Masculino)")
+    age_at_enrollment: Mapped[int] = mapped_column(Integer, nullable=False, doc="Idade do aluno na matrícula (17–70)")
+    international: Mapped[int] = mapped_column(Integer, nullable=False, doc="Estudante internacional (0=Não, 1=Sim)")
     
-    # nome: Mapped[str] = mapped_column(String(200), nullable=False)
-    # endereco: Mapped[str] = mapped_column(String(50), nullable=False)
-    # latitude: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
-    # longitude: Mapped[Optional[float]] = mapped_column(Float, nullable=True)
-    # cuisine: Mapped[str] = mapped_column(String(100), nullable=True)
-    # telefone: Mapped[Optional[str]] = mapped_column(String(20), nullable=True)
-    # website: Mapped[Optional[str]] = mapped_column(String(300), nullable=True)
+    # Dados durante matricula
+    application_mode: Mapped[int] = mapped_column(Integer, nullable=False, doc="Modo de candidatura (1–18)")
+    application_order: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ordem de preferência na candidatura (1–9)")
+    course: Mapped[int] = mapped_column(Integer, nullable=False, doc="Curso matriculado (1–17)")
+    school_time: Mapped[int] = mapped_column(Integer, nullable=False, doc="Turno do curso (0=Noturno, 1=Diurno)")
+    previous_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Qualificação anterior (1–17)")
     
-    data_predictor: Mapped[Optional[datetime]] = mapped_column(DateTime(), default=lambda: datetime.now(), server_default=func.now()) 
+    # Desempenho Acadêmico - 1o Sem
+    # UC = unidades curriculares
+    curricular_units_1st_sem_credited: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas creditadas 1º sem (0–20)")
+    curricular_units_1st_sem_enrolled: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas matriculadas 1º sem (0–26)")
+    curricular_units_1st_sem_evaluations: Mapped[int] = mapped_column(Integer, nullable=False, doc="Avaliações realizadas 1º sem (0–45)")
+    curricular_units_1st_sem_approved: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas aprovadas 1º sem (0–26)")
+    curricular_units_1st_sem_grade: Mapped[float] = mapped_column(Float, nullable=False, doc="Média de notas 1º sem (0.000–18.875)")
+    curricular_units_1st_sem_without_evaluations: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas sem avaliação 1º sem (0–12)")
+    
+    # Desempenho Acadêmico - 2o Sem
+    curricular_units_2nd_sem_credited: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas creditadas 2º sem (0–19)")
+    curricular_units_2nd_sem_enrolled: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas matriculadas 2º sem (0–23)")
+    curricular_units_2nd_sem_evaluations: Mapped[int] = mapped_column(Integer, nullable=False, doc="Avaliações realizadas 2º sem (0–33)")
+    curricular_units_2nd_sem_approved: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas aprovadas 2º sem (0–20)")
+    curricular_units_2nd_sem_grade: Mapped[float] = mapped_column(Float, nullable=False, doc="Média de notas 2º sem (0.000–18.571)")
+    curricular_units_2nd_sem_without_evaluations: Mapped[int] = mapped_column(Integer, nullable=False, doc="Disciplinas sem avaliação 2º sem (0–12)")
+    
+    # Data do cadastro do estudante no banco de dados
+    data_insercao: Mapped[Optional[datetime]] = mapped_column(DateTime(), default=lambda: datetime.now(), server_default=func.now())
