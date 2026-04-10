@@ -1,4 +1,4 @@
-from routes.estudantes import estudantes_bp
+from api.routes.estudantes import estudantes_bp
 # from routes.gestores import gestores_bp
 
 BLUEPRINTS = [
