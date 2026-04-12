@@ -10,10 +10,12 @@ import uuid
 
 from models import Base
 
+#TODO: criar matricula automaticamente
 class Estudante(Base):
     __tablename__ = "estudantes"
     
-    matricula: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False)
+    # matricula: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False)
+    matricula: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False, autoincrement=True)
     
     # Dados familiares
     father_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nível de educação do pai (1–34)")

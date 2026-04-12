@@ -35,11 +35,11 @@ def criar_estudante(form: EstudanteSchema):
     try:
         dados_estudante = form.model_dump() 
         estudante = Estudante(**dados_estudante)
+        estudante.situacao_academica = "Pendente de Predição"
 
         # Persistência no banco de dados
         Session.add(estudante)
         Session.commit()
-
         return EstudanteViewSchema.model_validate(estudante).model_dump(), HTTPStatus.CREATED
     
 
@@ -49,8 +49,7 @@ def criar_estudante(form: EstudanteSchema):
         
     except Exception as e:
         Session.rollback()
-        abort(HTTPStatus.BAD_REQUEST)
-
+        return {"erro": str(e), "tipo": type(e).__name__}, HTTPStatus.BAD_REQUEST
 
 
 
