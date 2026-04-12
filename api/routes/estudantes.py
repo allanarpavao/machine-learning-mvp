@@ -24,6 +24,7 @@ estudantes_bp = APIBlueprint(
 
 
 # TODO: adicionar ErrorSchema
+# TODO: adicionar try/except para modelo de ML
 @estudantes_bp.post('/criar', responses={"201": EstudanteViewSchema})
 def predict_estudante(body: EstudanteSchema):
     """Adiciona um novo estudante à base de dados.
@@ -60,11 +61,30 @@ def predict_estudante(body: EstudanteSchema):
 
 
 
+@estudantes_bp.get('/listar', responses={"200": EstudanteViewSchema})
+def get_estudantes():
+    """Lista todos os estudantes cadastrados no db
+
+    """
+
+    try:
+        estudantes = Session.query(Estudante).all()
+        if not estudantes:
+            return {
+                    "status": "success",
+                    "mensagem": "Nenhum usuário encontrado.",
+                    "usuarios": [],
+                    "quantidade": 0
+                }, HTTPStatus.OK
+        return [EstudanteViewSchema.model_validate(estudante).model_dump() for estudante in estudantes], HTTPStatus.OK
+   
+    except Exception as e:
+        return {"status": "error", "mensagem": str(e)}, HTTPStatus.INTERNAL_SERVER_ERROR
+
+    finally:
+        Session.remove()
 
 ##---------------------------##
-
-# TODO: listagem para aparecer no front end
-# @estudantes_bp.get()
 
 # TODO: apagar estudante
 # @estudantes_bp.delete()
