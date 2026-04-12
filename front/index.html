@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SGA - Sistema de Gestão Acadêmica | Predição</title>
-    <!-- Fonte moderna para visual limpo -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -21,48 +20,151 @@
             
             <form id="predictionForm">
                 <div class="form-grid">
-                    <!-- Variáveis Demográficas -->
+                    
+                    <!-- ==============================
+                         Dados Sociodemográficos
+                    =============================== -->
                     <div class="input-group">
-                        <label for="ageAtEnrollment">Idade na Matrícula</label>
-                        <input type="number" id="ageAtEnrollment" name="ageAtEnrollment" required min="15" max="100" placeholder="Ex: 19">
+                        <label for="maritalStatus">Estado Civil</label>
+                        <input type="number" id="maritalStatus" name="Marital_status" placeholder="Ex: 1 a 6" required>
                     </div>
-
+                    <div class="input-group">
+                        <label for="nationality">Nacionalidade</label>
+                        <input type="number" id="nationality" name="Nationality" placeholder="Ex: 1 (Português)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="displaced">Deslocado</label>
+                        <input type="number" id="displaced" name="Displaced" placeholder="Ex: 0 (Não) ou 1 (Sim)" required>
+                    </div>
                     <div class="input-group">
                         <label for="gender">Gênero</label>
-                        <select id="gender" name="gender" required>
-                            <option value="">Selecione...</option>
-                            <option value="1">Masculino</option>
-                            <option value="0">Feminino</option>
-                        </select>
+                        <input type="number" id="gender" name="Gender" placeholder="Ex: 0 (Fem) ou 1 (Masc)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="ageAtEnrollment">Idade na Matrícula</label>
+                        <input type="number" id="ageAtEnrollment" name="Age_at_enrollment" placeholder="Ex: 19" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="international">Estudante Internacional</label>
+                        <input type="number" id="international" name="International" placeholder="Ex: 0 (Não) ou 1 (Sim)" required>
                     </div>
 
-                    <!-- Variáveis Socioeconômicas -->
+                    <!-- ==============================
+                         Dados Socioeconômicos
+                    =============================== -->
                     <div class="input-group">
-                        <label for="scholarshipHolder">Bolsista?</label>
-                        <select id="scholarshipHolder" name="scholarshipHolder" required>
-                            <option value="1">Sim</option>
-                            <option value="0" selected>Não</option>
-                        </select>
+                        <label for="mothersQualification">Qualificação da Mãe</label>
+                        <input type="number" id="mothersQualification" name="Mothers_qualification" placeholder="Ex: 1 a 29" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="fathersQualification">Qualificação do Pai</label>
+                        <input type="number" id="fathersQualification" name="Fathers_qualification" placeholder="Ex: 1 a 34" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="mothersOccupation">Ocupação da Mãe</label>
+                        <input type="number" id="mothersOccupation" name="Mothers_occupation" placeholder="Ex: 1 a 32" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="fathersOccupation">Ocupação do Pai</label>
+                        <input type="number" id="fathersOccupation" name="Fathers_occupation" placeholder="Ex: 1 a 46" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="educationalSpecialNeeds">Necessidades Especiais</label>
+                        <input type="number" id="educationalSpecialNeeds" name="Educational_special_needs" placeholder="Ex: 0 (Não) ou 1 (Sim)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="debtor">Inadimplente (Devedor)</label>
+                        <input type="number" id="debtor" name="Debtor" placeholder="Ex: 0 (Não) ou 1 (Sim)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="tuitionFeesUpToDate">Mensalidades em Dia</label>
+                        <input type="number" id="tuitionFeesUpToDate" name="Tuition_fees_up_to_date" placeholder="Ex: 0 (Não) ou 1 (Sim)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="scholarshipHolder">Bolsista</label>
+                        <input type="number" id="scholarshipHolder" name="Scholarship_holder" placeholder="Ex: 0 (Não) ou 1 (Sim)" required>
                     </div>
 
+                    <!-- ==============================
+                         Dados de Ingresso (Candidatura)
+                    =============================== -->
                     <div class="input-group">
-                        <label for="tuitionUpToDate">Mensalidade em Dia?</label>
-                        <select id="tuitionUpToDate" name="tuitionUpToDate" required>
-                            <option value="1" selected>Sim</option>
-                            <option value="0">Não</option>
-                        </select>
+                        <label for="applicationMode">Modo de Candidatura</label>
+                        <input type="number" id="applicationMode" name="Application_mode" placeholder="Ex: 1 a 18" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="applicationOrder">Ordem de Preferência</label>
+                        <input type="number" id="applicationOrder" name="Application_order" placeholder="Ex: 1 a 9" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="course">Curso</label>
+                        <input type="number" id="course" name="Course" placeholder="Ex: 1 a 17" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="daytimeEveningAttendance">Turno</label>
+                        <input type="number" id="daytimeEveningAttendance" name="Daytime_evening_attendance" placeholder="Ex: 0 (Noturno) ou 1 (Diurno)" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="previousQualification">Qualificação Anterior</label>
+                        <input type="number" id="previousQualification" name="Previous_qualification" placeholder="Ex: 1 a 17" required>
                     </div>
 
-                    <!-- Variáveis Acadêmicas (Exemplo) -->
+                    <!-- ==============================
+                         Desempenho Acadêmico - 1º Semestre
+                    =============================== -->
                     <div class="input-group">
-                        <label for="curricUnits1stSem">Disciplinas Aprovadas (1º Sem)</label>
-                        <input type="number" id="curricUnits1stSem" name="curricUnits1stSem" required min="0" placeholder="Ex: 5">
+                        <label for="cu1stSemCredited">Disc. Creditadas (1º Sem)</label>
+                        <input type="number" id="cu1stSemCredited" name="Curricular_units_1st_sem_credited" placeholder="Ex: 0" required>
                     </div>
-                    
                     <div class="input-group">
-                        <label for="admissionGrade">Nota de Admissão</label>
-                        <input type="number" step="0.1" id="admissionGrade" name="admissionGrade" required min="0" max="200" placeholder="Ex: 120.5">
+                        <label for="cu1stSemEnrolled">Disc. Matriculadas (1º Sem)</label>
+                        <input type="number" id="cu1stSemEnrolled" name="Curricular_units_1st_sem_enrolled" placeholder="Ex: 6" required>
                     </div>
+                    <div class="input-group">
+                        <label for="cu1stSemEvaluations">Avaliações Realizadas (1º Sem)</label>
+                        <input type="number" id="cu1stSemEvaluations" name="Curricular_units_1st_sem_evaluations" placeholder="Ex: 8" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu1stSemApproved">Disc. Aprovadas (1º Sem)</label>
+                        <input type="number" id="cu1stSemApproved" name="Curricular_units_1st_sem_approved" placeholder="Ex: 5" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu1stSemGrade">Média de Notas (1º Sem)</label>
+                        <input type="number" step="0.001" id="cu1stSemGrade" name="Curricular_units_1st_sem_grade" placeholder="Ex: 14.333" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu1stSemWithoutEvals">Disc. Sem Avaliação (1º Sem)</label>
+                        <input type="number" id="cu1stSemWithoutEvals" name="Curricular_units_1st_sem_without_evaluations" placeholder="Ex: 0" required>
+                    </div>
+
+                    <!-- ==============================
+                         Desempenho Acadêmico - 2º Semestre
+                    =============================== -->
+                    <div class="input-group">
+                        <label for="cu2ndSemCredited">Disc. Creditadas (2º Sem)</label>
+                        <input type="number" id="cu2ndSemCredited" name="Curricular_units_2nd_sem_credited" placeholder="Ex: 0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu2ndSemEnrolled">Disc. Matriculadas (2º Sem)</label>
+                        <input type="number" id="cu2ndSemEnrolled" name="Curricular_units_2nd_sem_enrolled" placeholder="Ex: 6" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu2ndSemEvaluations">Avaliações Realizadas (2º Sem)</label>
+                        <input type="number" id="cu2ndSemEvaluations" name="Curricular_units_2nd_sem_evaluations" placeholder="Ex: 7" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu2ndSemApproved">Disc. Aprovadas (2º Sem)</label>
+                        <input type="number" id="cu2ndSemApproved" name="Curricular_units_2nd_sem_approved" placeholder="Ex: 5" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu2ndSemGrade">Média de Notas (2º Sem)</label>
+                        <input type="number" step="0.001" id="cu2ndSemGrade" name="Curricular_units_2nd_sem_grade" placeholder="Ex: 13.500" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="cu2ndSemWithoutEvals">Disc. Sem Avaliação (2º Sem)</label>
+                        <input type="number" id="cu2ndSemWithoutEvals" name="Curricular_units_2nd_sem_without_evaluations" placeholder="Ex: 0" required>
+                    </div>
+
                 </div>
 
                 <button type="submit" class="btn-primary" id="submitBtn">

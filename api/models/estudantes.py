@@ -10,7 +10,7 @@ import uuid
 
 from models import Base
 
-class Estudantes(Base):
+class Estudante(Base):
     __tablename__ = "estudantes"
     
     matricula: Mapped[int] = mapped_column(Integer, primary_key=True, nullable=False)

@@ -15,3 +15,31 @@ estudantes_bp = APIBlueprint(
     url_prefix='/estudantes',
     abp_tags=[Tag(name='Estudantes', description='Operações do estudante')]
 )
+
+
+# TODO: cadastrar estudante
+@estudantes_bp.post('/criar', responses={"201": UsuarioViewSchema, "409": ErrorSchema, "400": ErrorSchema})
+# TODO: try/except com rollback()
+def criar_usuario(form: UsuarioSchema):
+    """Adiciona um novo usuário à base de dados
+
+    Retorna uma representação dos usuários.
+    """
+    try:
+        usuario = Usuario(
+            nome_usuario = form.nome_usuario,
+            email = form.email,
+            senha = form.senha
+        )
+
+        Session.add(usuario)
+        Session.commit()
+
+        return apresenta_usuario(usuario), HTTPStatus.CREATED
+
+
+# TODO: listagem para aparecer no front end
+# @estudantes_bp.get()
+
+# TODO: apagar estudante
+# @estudantes_bp.delete()
