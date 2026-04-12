@@ -5,6 +5,7 @@ from http import HTTPStatus
 from sqlalchemy.exc import IntegrityError
 from flask import abort
 
+from models.machine_learning import Pipeline, Preprocessador
 from models import Session
 from models.estudantes import Estudante
 from schemas.estudantes import EstudanteSchema, EstudanteViewSchema
@@ -23,19 +24,25 @@ estudantes_bp = APIBlueprint(
 
 
 # TODO: adicionar ErrorSchema
-# TODO: try/except com rollback()
-# TODO: return apresenta_estudante para documentaçao
 @estudantes_bp.post('/criar', responses={"201": EstudanteViewSchema})
-def criar_estudante(form: EstudanteSchema):
+def predict_estudante(body: EstudanteSchema):
     """Adiciona um novo estudante à base de dados.
     
     Recebe os atributos do aluno,
     salva no banco de dados e retorna a resposta do modelo.
     """
+    # usa o modelo de machine learning
+    preprocessador = Preprocessador()
+    dados_in = preprocessador.preparar_form(body)
+    best_pipeline = Pipeline()
+    best_pipeline.carrega_pipeline()
+    nova_avaliacao_estudante = best_pipeline.preditor(dados_in)
+    resultado = nova_avaliacao_estudante[0]
+    
     try:
-        dados_estudante = form.model_dump() 
+        dados_estudante = body.model_dump()
         estudante = Estudante(**dados_estudante)
-        estudante.situacao_academica = "Pendente de Predição"
+        estudante.situacao_academica = resultado
 
         # Persistência no banco de dados
         Session.add(estudante)
@@ -50,8 +57,6 @@ def criar_estudante(form: EstudanteSchema):
     except Exception as e:
         Session.rollback()
         return {"erro": str(e), "tipo": type(e).__name__}, HTTPStatus.BAD_REQUEST
-
-
 
 
 

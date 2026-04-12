@@ -6,37 +6,16 @@ from pathlib import Path
 
 
 class Preprocessador:
-# FIXME:
     def preparar_form(self, form):
-        """ Prepara os dados recebidos do front para serem usados no modelo. """
-        X_input = np.array([form.preg, 
-                            form.plas, 
-                            form.pres, 
-                            form.skin, 
-                            form.test, 
-                            form.mass, 
-                            form.pedi, 
-                            form.age
-                        ])
-        # Faremos o reshape para que o modelo entenda que estamos passando
-        X_input = X_input.reshape(1, -1)
-        return X_input
-    
-    def preparar_array_lista(self, dados_lista):
-        """" Transforma dados em lista em array Numpy
+        """ Prepara os dados recebidos do front para serem usados no modelo.
+        
         """
-        X_input = np.array(dados_lista)
+        
+        valores_em_lista = list(form.model_dump().values())
+        X_input = np.array(valores_em_lista)
+
         X_input = X_input.reshape(1, -1)
-
         return X_input
-
-    # def scaler(self, X_train):
-    #     """ Normaliza os dados. """
-    #     scaler = pickle.load(open('./MachineLearning/models/minmax_scaler_students.pkl', 'rb'))
-    #     reescaled_X_train = scaler.transform(X_train)
-
-    #     return reescaled_X_train
-
 
 # class Modelo:
     
@@ -82,7 +61,6 @@ class Pipeline:
         results = self.pipeline.predict(X_input)
         return results
 
-# TODO:
     def preditor_proba(self, X_input):
         """ Retorna as probabilidades de cada classe. """
         if self.pipeline is None:
@@ -104,10 +82,10 @@ if __name__ == '__main__':
     # Pre processamento de dados:
     preprocessador = Preprocessador()
     dados_in_array = preprocessador.preparar_array_lista(dados_in)
+    breakpoint()
 
     # Inicializar pipeline:
     best_pipeline = Pipeline()
-    caminho_pipeline_pkl = '../MachineLearning/models/students_pipeline.pkl'
     best_pipeline.carrega_pipeline()
 
     # Predicao

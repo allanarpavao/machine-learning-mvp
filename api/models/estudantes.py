@@ -20,13 +20,13 @@ class Estudante(Base):
     # Dados familiares
     father_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nível de educação do pai (1–34)")
     mother_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nível de educação da mãe (1–29)")
-    father_ocupation: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ocupação profissional do pai (1–46)")
-    mother_ocupation: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ocupação profissional da mãe (1–32)")
+    father_occupation: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ocupação profissional do pai (1–46)")
+    mother_occupation: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ocupação profissional da mãe (1–32)")
     
     # Informações Pessoais
     education_special_needs: Mapped[int] = mapped_column(Integer, nullable=False, doc="Necessidades educacionais especiais (0=Não, 1=Sim)")
     debtor: Mapped[int] = mapped_column(Integer, nullable=False, doc="Inadimplente (0=Não, 1=Sim)")
-    tuiton_fees_up_to_date: Mapped[int] = mapped_column(Integer, nullable=False, doc="Mensalidades em dia (0=Não, 1=Sim)")
+    tuition_fees_up_to_date: Mapped[int] = mapped_column(Integer, nullable=False, doc="Mensalidades em dia (0=Não, 1=Sim)")
     scholarship_holder: Mapped[int] = mapped_column(Integer, nullable=False, doc="Bolsista (0=Não, 1=Sim)")
     marital_status: Mapped[int] = mapped_column(Integer, nullable=False, doc="Estado civil do aluno (1–6)")
     nationality: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nacionalidade do aluno (1–21)")
@@ -39,8 +39,11 @@ class Estudante(Base):
     application_mode: Mapped[int] = mapped_column(Integer, nullable=False, doc="Modo de candidatura (1–18)")
     application_order: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ordem de preferência na candidatura (1–9)")
     course: Mapped[int] = mapped_column(Integer, nullable=False, doc="Curso matriculado (1–17)")
-    school_time: Mapped[int] = mapped_column(Integer, nullable=False, doc="Turno do curso (0=Noturno, 1=Diurno)")
+    daytime_evening_attendance: Mapped[int] = mapped_column(Integer, nullable=False, doc="Turno do curso (0=Noturno, 1=Diurno)")
     previous_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Qualificação anterior (1–17)")
+    previous_qualification_grade: Mapped[float] = mapped_column(Float, nullable=False, doc="Nota do curso anterior")
+    admission_grade: Mapped[float] = mapped_column(Float, nullable=False, doc="Nota de Admissão(95-190)")
+    
     
     # Desempenho Acadêmico - 1o Sem
     # UC = unidades curriculares

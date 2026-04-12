@@ -3,21 +3,23 @@ Father's qualification,int,1–34,Nível de educação do pai
 Mother's qualification,int,1–29,Nível de educação da mãe
 Father's occupation,int,1–46,Ocupação profissional do pai (código categórico)
 Mother's occupation,int,1–32,Ocupação profissional da mãe (código categórico)
-Educational special needs,int,0–1,"Indica se o aluno possui necessidades educacionais especiais (0=Não, 1=Sim)"
-Debtor,int,0–1,"Indica se o aluno está inadimplente (0=Não, 1=Sim)"
-Tuition fees up to date,int,0–1,"Indica se as mensalidades estão em dia (0=Não, 1=Sim)"
-Scholarship holder,int,0–1,"Indica se o aluno é bolsista (0=Não, 1=Sim)"
+Educational special needs,int,0–1,Indica se o aluno possui necessidades educacionais especiais (0=Não, 1=Sim)
+Debtor,int,0–1,Indica se o aluno está inadimplente (0=Não, 1=Sim)
+Tuition fees up to date,int,0–1,Indica se as mensalidades estão em dia (0=Não, 1=Sim)
+Scholarship holder,int,0–1,Indica se o aluno é bolsista (0=Não, 1=Sim)
 Marital status,int,1–6,Estado civil do aluno (código categórico)
 Nationality,int,1–21,Nacionalidade do aluno (código categórico)
-Displaced,int,0–1,"Indica se o aluno é proveniente de outra região (0=Não, 1=Sim)"
-Gender,int,0–1,"Gênero do aluno (0=Feminino, 1=Masculino)"
+Displaced,int,0–1,Indica se o aluno é proveniente de outra região (0=Não, 1=Sim)
+Gender,int,0–1,Gênero do aluno (0=Feminino, 1=Masculino)
 Age at enrollment,int,17–70,Idade do aluno no momento da matrícula
-International,int,0–1,"Indica se o aluno é estudante internacional (0=Não, 1=Sim)"
+International,int,0–1,Indica se o aluno é estudante internacional (0=Não, 1=Sim)
 Application mode,int,1–18,Modo de candidatura ao curso (código categórico)
 Application order,int,1–9,Ordem de preferência do curso na candidatura
+Admission grade,float,95-190,Nota de Admissão
 Course,int,1–17,Curso em que o aluno está matriculado (código categórico)
-Daytime/evening attendance,int,0–1,"Turno do curso (0=Noturno, 1=Diurno)"
+Daytime/evening attendance,int,0–1,Turno do curso (0=Noturno, 1=Diurno)
 Previous qualification,int,1–17,Qualificação anterior do aluno antes de ingressar (código categórico)
+Previous qualification (grade),float,95-190,Nota do curso curso anterior
 Curricular units 1st sem (credited),int,0–20,Disciplinas creditadas no 1º semestre
 Curricular units 1st sem (enrolled),int,0–26,Disciplinas matriculadas no 1º semestre
 Curricular units 1st sem (evaluations),int,0–45,Número de avaliações realizadas no 1º semestre
