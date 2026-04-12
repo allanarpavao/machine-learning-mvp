@@ -8,7 +8,7 @@ from flask import abort
 from models.machine_learning import Pipeline, Preprocessador
 from models import Session
 from models.estudantes import Estudante
-from schemas.estudantes import EstudanteSchema, EstudanteViewSchema
+from schemas.estudantes import EstudanteBuscaSchema, EstudanteSchema, EstudanteViewSchema
 
 # from models import Session
 # from models.usuario import Usuario
@@ -71,20 +71,47 @@ def get_estudantes():
         estudantes = Session.query(Estudante).all()
         if not estudantes:
             return {
-                    "status": "success",
                     "mensagem": "Nenhum usuário encontrado.",
                     "usuarios": [],
                     "quantidade": 0
                 }, HTTPStatus.OK
+        
         return [EstudanteViewSchema.model_validate(estudante).model_dump() for estudante in estudantes], HTTPStatus.OK
    
     except Exception as e:
-        return {"status": "error", "mensagem": str(e)}, HTTPStatus.INTERNAL_SERVER_ERROR
+        return {"erro": str(e), "tipo": type(e).__name__}, HTTPStatus.INTERNAL_SERVER_ERROR
 
     finally:
         Session.remove()
 
-##---------------------------##
+@estudantes_bp.delete('/',
+            responses={"200": EstudanteViewSchema})
+def delete_estudante(query: EstudanteBuscaSchema):
+    """Remove um estudante do sistema com base no id fornecido.
+    Retorna uma resposta indicando o sucesso ou a falha da operação.
+    """
+    
+    estudante_id = query.id_estudante
+    try:
+        estudante = Session.query(Estudante).filter(Estudante.matricula == estudante_id).first()
+        
+        if estudante:
+            Session.query(Estudante).filter(Estudante.matricula == estudante_id).delete()
+            Session.commit()
+            return {
+                "mensagem": f"Usuário removido com sucesso."
+            }, HTTPStatus.OK
+        else:
+            return {"mensagem": f"Usuário não encontrado na base."
+            }, HTTPStatus.NOT_FOUND
+    
+    except IntegrityError:
+        Session.rollback()
+        return {"mensagem": "Não é possível deletar"}, HTTPStatus.CONFLICT
+    
+    except Exception as e:
+        Session.rollback()
+        return {"erro": str(e), "tipo": type(e).__name__}, HTTPStatus.INTERNAL_SERVER_ERROR
 
-# TODO: apagar estudante
-# @estudantes_bp.delete()
+    finally:
+        Session.remove()

@@ -51,14 +51,8 @@ class EstudanteViewSchema(BaseModel):
     matricula: int
     situacao_academica: str
 
-# class UsuarioBuscaSchema(BaseModel):
-#     """ Define como deve ser a estrutura que representa a busca.
-#         A busca será feita apenas com base no uuid do usuario.
-#     """
-#     id_usuario: str = "7a743fa4-57b5-4b0b-b97a-5da34a58bf62"
-
-# class ListagemUsuariosSchema(BaseModel):
-#     """ Define como uma listagem de produtos será retornada.
-#     """
-#     usuarios: List[UsuarioSchema]
-
+class EstudanteBuscaSchema(BaseModel):
+    """ Define como deve ser a estrutura que representa a busca.
+        A busca será feita apenas com base no id do estudante.
+    """
+    id_estudante: int = 1
