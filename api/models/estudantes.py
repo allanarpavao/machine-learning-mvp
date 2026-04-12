@@ -28,7 +28,7 @@ class Estudante(Base):
     scholarship_holder: Mapped[int] = mapped_column(Integer, nullable=False, doc="Bolsista (0=Não, 1=Sim)")
     marital_status: Mapped[int] = mapped_column(Integer, nullable=False, doc="Estado civil do aluno (1–6)")
     nationality: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nacionalidade do aluno (1–21)")
-    displaced: Mapped[int] = mapped_column(Integer, nullable=False, doc="Deslocado de outra região (0=Não, 1=Sim)")
+    displaced: Mapped[int] = mapped_column(Integer, nullable=False, doc="Proveniente de outra região (0=Não, 1=Sim)")
     gender: Mapped[int] = mapped_column(Integer, nullable=False, doc="Gênero do aluno (0=Feminino, 1=Masculino)")
     age_at_enrollment: Mapped[int] = mapped_column(Integer, nullable=False, doc="Idade do aluno na matrícula (17–70)")
     international: Mapped[int] = mapped_column(Integer, nullable=False, doc="Estudante internacional (0=Não, 1=Sim)")
@@ -59,3 +59,4 @@ class Estudante(Base):
     
     # Data do cadastro do estudante no banco de dados
     data_insercao: Mapped[Optional[datetime]] = mapped_column(DateTime(), default=lambda: datetime.now(), server_default=func.now())
+    situacao_academica: Mapped[str] = mapped_column(String, nullable=False, doc="Situação acadêmica do modelo")

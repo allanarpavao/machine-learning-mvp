@@ -4,9 +4,6 @@ from sqlalchemy import create_engine
 import os
 
 from models.base import Base
-from models.usuario import Usuario
-from models.restaurante import Restaurante
-from models.avaliacao import Avaliacao
 
 db_path = "database/"
 # Verifica se o diretorio não existe

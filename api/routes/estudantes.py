@@ -3,6 +3,11 @@ import uuid
 from flask_openapi3 import APIBlueprint, Tag
 from http import HTTPStatus
 from sqlalchemy.exc import IntegrityError
+from flask import abort
+
+from models import Session
+from models.estudantes import Estudante
+from schemas.estudantes import EstudanteSchema, EstudanteViewSchema
 
 # from models import Session
 # from models.usuario import Usuario
@@ -17,26 +22,42 @@ estudantes_bp = APIBlueprint(
 )
 
 
-# TODO: cadastrar estudante
-@estudantes_bp.post('/criar', responses={"201": UsuarioViewSchema, "409": ErrorSchema, "400": ErrorSchema})
+# TODO: adicionar ErrorSchema
 # TODO: try/except com rollback()
-def criar_usuario(form: UsuarioSchema):
-    """Adiciona um novo usuário à base de dados
-
-    Retorna uma representação dos usuários.
+# TODO: return apresenta_estudante para documentaçao
+@estudantes_bp.post('/criar', responses={"201": EstudanteViewSchema})
+def criar_estudante(form: EstudanteSchema):
+    """Adiciona um novo estudante à base de dados.
+    
+    Recebe os atributos do aluno,
+    salva no banco de dados e retorna a resposta do modelo.
     """
     try:
-        usuario = Usuario(
-            nome_usuario = form.nome_usuario,
-            email = form.email,
-            senha = form.senha
-        )
+        dados_estudante = form.model_dump() 
+        estudante = Estudante(**dados_estudante)
 
-        Session.add(usuario)
+        # Persistência no banco de dados
+        Session.add(estudante)
         Session.commit()
 
-        return apresenta_usuario(usuario), HTTPStatus.CREATED
+        return EstudanteViewSchema.model_validate(estudante).model_dump(), HTTPStatus.CREATED
+    
 
+    except IntegrityError as e:
+        Session.rollback()
+        abort(HTTPStatus.CONFLICT)
+        
+    except Exception as e:
+        Session.rollback()
+        abort(HTTPStatus.BAD_REQUEST)
+
+
+
+
+
+
+
+##---------------------------##
 
 # TODO: listagem para aparecer no front end
 # @estudantes_bp.get()

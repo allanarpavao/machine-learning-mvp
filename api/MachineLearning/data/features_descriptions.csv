@@ -9,7 +9,7 @@ Tuition fees up to date,int,0–1,"Indica se as mensalidades estão em dia (0=N�
 Scholarship holder,int,0–1,"Indica se o aluno é bolsista (0=Não, 1=Sim)"
 Marital status,int,1–6,Estado civil do aluno (código categórico)
 Nationality,int,1–21,Nacionalidade do aluno (código categórico)
-Displaced,int,0–1,"Indica se o aluno é deslocado de outra região (0=Não, 1=Sim)"
+Displaced,int,0–1,"Indica se o aluno é proveniente de outra região (0=Não, 1=Sim)"
 Gender,int,0–1,"Gênero do aluno (0=Feminino, 1=Masculino)"
 Age at enrollment,int,17–70,Idade do aluno no momento da matrícula
 International,int,0–1,"Indica se o aluno é estudante internacional (0=Não, 1=Sim)"
