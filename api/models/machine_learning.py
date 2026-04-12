@@ -1,10 +1,12 @@
 import pickle
 import pandas as pd
-from sklearn.model_selection import train_test_split
 import pickle
 import numpy as np
+from pathlib import Path
 
-class Preprocessador:    
+
+class Preprocessador:
+# FIXME:
     def preparar_form(self, form):
         """ Prepara os dados recebidos do front para serem usados no modelo. """
         X_input = np.array([form.preg, 
@@ -20,39 +22,38 @@ class Preprocessador:
         X_input = X_input.reshape(1, -1)
         return X_input
     
-    def scaler(self, X_train):
-        """ Normaliza os dados. """
-        # normalização/padronização
-        scaler = pickle.load(open('./MachineLearning/scalers/minmax_scaler_diabetes.pkl', 'rb'))
-        reescaled_X_train = scaler.transform(X_train)
-        return reescaled_X_train
-
-
-class Modelo:
-    
-    def __init__(self):
-        """Inicializa o modelo
+    def preparar_array_lista(self, dados_lista):
+        """" Transforma dados em lista em array Numpy
         """
-        self.model = None
-    
-    def carrega_modelo(self, path):
-        """Carrega o modelo construído
-        """
+        X_input = np.array(dados_lista)
+        X_input = X_input.reshape(1, -1)
 
-        with open(path, 'rb') as file:
-            self.model = pickle.load(file)
+        return X_input
+
+    # def scaler(self, X_train):
+    #     """ Normaliza os dados. """
+    #     scaler = pickle.load(open('./MachineLearning/models/minmax_scaler_students.pkl', 'rb'))
+    #     reescaled_X_train = scaler.transform(X_train)
+
+    #     return reescaled_X_train
+
+
+# class Modelo:
+    
+#     def __init__(self):
+#         """Inicializa o modelo
+#         """
+#         self.model = None
+    
+#     def carrega_modelo(self, path):
+#         """Carrega o modelo construído
+#         """
+
+#         with open(path, 'rb') as file:
+#             self.model = pickle.load(file)
        
-        return self.model
+#         return self.model
     
-    def preditor(self, X_input):
-        """Realiza a predição da situaçao academica de um estudante com base no modelo treinado
-        """
-        if self.model is None:
-            raise Exception('Modelo não foi carregado. Use carrega_modelo() primeiro.')
-        
-        results = self.model.predict(X_input)
-        return results
-
 
 class Pipeline:
     
@@ -61,15 +62,33 @@ class Pipeline:
         """
         self.pipeline = None
     
-    def carrega_pipeline(self, path):
+    def carrega_pipeline(self):
         """Carrega o pipeline construído
         """
+        caminho_pasta_api = Path(__file__).resolve().parents[1]
+        caminho_pipeline_pkl = caminho_pasta_api / 'MachineLearning' / 'models' / 'students_pipeline.pkl'
+
+        with open(caminho_pipeline_pkl, 'rb') as file:
+            self.pipeline = pickle.load(file)
         
-        with open(path, 'rb') as file:
-             self.pipeline = pickle.load(file)
-             
         return self.pipeline
 
+    def preditor(self, X_input):
+        """Realiza a predição da situaçao academica de um estudante com base no modelo treinado
+        """
+        if self.pipeline is None:
+            raise RuntimeError('O pipeline não foi carregado antes da predição.')
+        
+        results = self.pipeline.predict(X_input)
+        return results
+
+# TODO:
+    def preditor_proba(self, X_input):
+        """ Retorna as probabilidades de cada classe. """
+        if self.pipeline is None:
+            raise RuntimeError('O pipeline não foi carregado antes da predição.')
+        
+        return self.pipeline.predict_proba(X_input)
 
 
 ### Teste:
@@ -80,10 +99,20 @@ if __name__ == '__main__':
         6, 6, 6, 13.0, 0
     ]]
 
-    dados_in_array = np.array(dados_in)
-    nova_predicao = best_pipeline.predict(dados_in_array)
-    probabilidades = best_pipeline.predict_proba(dados_in_array)
+    print("teste local:")
+    
+    # Pre processamento de dados:
+    preprocessador = Preprocessador()
+    dados_in_array = preprocessador.preparar_array_lista(dados_in)
 
+    # Inicializar pipeline:
+    best_pipeline = Pipeline()
+    caminho_pipeline_pkl = '../MachineLearning/models/students_pipeline.pkl'
+    best_pipeline.carrega_pipeline()
 
-    # print(f"A categoria prevista para o aluno é: {nova_predicao[0]}")
-    # print(f"As probabilidades para cada classe são: {probabilidades[0]}")
+    # Predicao
+    nova_avaliacao_estudante = best_pipeline.preditor(dados_in_array)
+    probabilidades = best_pipeline.preditor_proba(dados_in_array)
+
+    print(f"\nA categoria prevista para o aluno é: {nova_avaliacao_estudante[0]}")
+    print(f"As probabilidades para cada classe são: {probabilidades[0]}")
