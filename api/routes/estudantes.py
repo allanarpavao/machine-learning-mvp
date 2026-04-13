@@ -2,7 +2,7 @@ from flask_openapi3 import APIBlueprint, Tag
 from http import HTTPStatus
 from sqlalchemy.exc import IntegrityError
 from flask import abort
-import pandas as pd
+
 
 from models.machine_learning import Pipeline, Preprocessador
 from models import Session
@@ -17,8 +17,12 @@ estudantes_bp = APIBlueprint(
     abp_tags=[Tag(name='Estudantes', description='Operações do estudante')]
 )
 
-# TODO: adicionar ErrorSchema
-# TODO: adicionar try/except para modelo de ML
+# Inicializa o modelo fora da rota
+pipeline = Pipeline()
+modelo_treinado = pipeline.carrega_pipeline()
+preprocessador = Preprocessador(atributos_do_modelo=modelo_treinado)
+
+
 @estudantes_bp.post('/criar', responses={"201": EstudanteViewSchema})
 def predict_estudante(body: EstudanteSchema):
     """Adiciona um novo estudante à base de dados.
@@ -27,17 +31,9 @@ def predict_estudante(body: EstudanteSchema):
     salva no banco de dados e retorna a resposta do modelo.
     """
     
-    dados_forms_em_dict = body.model_dump()
-    dados_em_dataframe = pd.DataFrame([dados_forms_em_dict])
-
-    breakpoint()
     # usa o modelo de machine learning
-    #TODO: Encapsular em funcao unica
-    preprocessador = Preprocessador()
-    dados_in = preprocessador.preparar_form(body)
-    best_pipeline = Pipeline()
-    best_pipeline.carrega_pipeline()
-    nova_avaliacao_estudante = best_pipeline.preditor(dados_in)
+    dados_in = preprocessador.preparar_dados_body(body)
+    nova_avaliacao_estudante = pipeline.preditor(dados_in)
     resultado = nova_avaliacao_estudante[0]
     
     try:

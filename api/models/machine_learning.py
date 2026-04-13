@@ -1,20 +1,24 @@
 from sklearn.metrics import accuracy_score, f1_score, recall_score
 import pickle
 import pickle
-import numpy as np
+import pandas as pd
 from pathlib import Path
 
 
 class Preprocessador:
-    def receber_form(self, form):
-        """ Prepara os dados recebidos do front para serem usados no modelo.
+    def __init__(self, atributos_do_modelo):
+        """ Extrai a ordem correta das colunas.
         """
-        
-        valores_em_lista = list(form.model_dump().values())
-        X_input = np.array(valores_em_lista)
+        self.colunas_ordenadas = atributos_do_modelo.feature_names_in_
 
-        X_input = X_input.reshape(1, -1)
-        return X_input
+
+    def preparar_dados_body(self, body):
+        """ Recebe os dados do front e transforma em dataframe.
+        """
+        dados_forms_em_dict = body.model_dump()
+        dados_em_dataframe = pd.DataFrame([dados_forms_em_dict], columns=self.colunas_ordenadas)
+
+        return dados_em_dataframe
 
 
 class Pipeline:
@@ -68,31 +72,3 @@ class Avaliador:
     def avaliar_f1(self, modelo, X, y_true):
         y_pred = modelo.preditor(X)
         return f1_score(y_true, y_pred, average='weighted')
-
-
-
-### Teste:
-if __name__ == '__main__':
-    dados_in = [[
-        2, 39, 1, 8014, 0, 1, 100.0, 1, 37, 38, 9, 9, 141.5, 
-        0, 0, 0, 1, 0, 0, 45, 0, 0, 6, 9, 5, 12.334, 0, 0, 
-        6, 6, 6, 13.0, 0
-    ]]
-
-    print("teste local:")
-    
-    # Pre processamento de dados:
-    preprocessador = Preprocessador()
-    dados_in_array = preprocessador.preparar_array_lista(dados_in)
-    breakpoint()
-
-    # Inicializar pipeline:
-    best_pipeline = Pipeline()
-    best_pipeline.carrega_pipeline()
-
-    # Predicao
-    nova_avaliacao_estudante = best_pipeline.preditor(dados_in_array)
-    probabilidades = best_pipeline.preditor_proba(dados_in_array)
-
-    print(f"\nA categoria prevista para o aluno é: {nova_avaliacao_estudante[0]}")
-    print(f"As probabilidades para cada classe são: {probabilidades[0]}")
