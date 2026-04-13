@@ -1,5 +1,3 @@
-from urllib.parse import unquote
-import uuid
 from flask_openapi3 import APIBlueprint, Tag
 from http import HTTPStatus
 from sqlalchemy.exc import IntegrityError
@@ -10,10 +8,6 @@ from models import Session
 from models.estudantes import Estudante
 from schemas.estudantes import EstudanteBuscaSchema, EstudanteSchema, EstudanteViewSchema
 
-# from models import Session
-# from models.usuario import Usuario
-# from schemas.error import ErrorSchema
-# from schemas.usuario import ListagemUsuariosSchema, UsuarioBuscaSchema, UsuarioSchema, UsuarioViewSchema, apresenta_usuario, apresenta_usuarios
 
 estudantes_bp = APIBlueprint(
     'estudantes',
@@ -90,7 +84,7 @@ def delete_estudante(query: EstudanteBuscaSchema):
     """Remove um estudante do sistema com base no id fornecido.
     Retorna uma resposta indicando o sucesso ou a falha da operação.
     """
-    
+
     estudante_id = query.id_estudante
     try:
         estudante = Session.query(Estudante).filter(Estudante.matricula == estudante_id).first()

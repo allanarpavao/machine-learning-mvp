@@ -1,5 +1,5 @@
 // URL base da sua API Flask/FastAPI (Ajuste a porta conforme o backend)
-const API_URL = 'http://localhost:5000/api/predict';
+const API_URL = 'http://localhost:8000/estudantes/criar';
 
 document.getElementById('predictionForm').addEventListener('submit', async function(event) {
     // Evita o recarregamento da página (comportamento SPA)
@@ -44,8 +44,7 @@ document.getElementById('predictionForm').addEventListener('submit', async funct
 
         const result = await response.json();
         
-        // 4. Exibe o resultado na tela
-        showResult(result.prediction); // Espera-se que a API retorne { "prediction": "Graduate" }
+        showResult(result.situacao_academica); // Espera-se que a API retorne { "situacao_academica": "Graduate" }
 
     } catch (error) {
         console.error('Erro ao realizar a predição:', error);
@@ -67,7 +66,6 @@ function showResult(predictionClass) {
     badge.className = 'badge';
 
     // Mapeia as classes do modelo para a UI
-    // Os textos variam dependendo de como seu LabelEncoder foi treinado no Python
     if (predictionClass.toLowerCase() === 'graduate' || predictionClass === 1) {
         badge.textContent = 'Aprovado / Formado';
         badge.classList.add('graduate');
@@ -84,9 +82,7 @@ function showResult(predictionClass) {
         message.textContent = 'Aluno em progressão normal, requer acompanhamento padrão.';
     }
 
-    // Exibe a seção com animação CSS
     resultSection.classList.remove('hidden');
-    // Rola a tela suavemente para o resultado
     resultSection.scrollIntoView({ behavior: 'smooth' });
 }
 
