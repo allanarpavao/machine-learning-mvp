@@ -1,4 +1,3 @@
-// URL base da sua API Flask/FastAPI (Ajuste a porta conforme o backend)
 const API_URL = 'http://localhost:8000/estudantes/criar';
 
 document.getElementById('predictionForm').addEventListener('submit', async function(event) {
@@ -11,28 +10,26 @@ document.getElementById('predictionForm').addEventListener('submit', async funct
     const btnLoader = document.getElementById('btnLoader');
     const resultSection = document.getElementById('resultSection');
 
-    // 1. Coleta os dados do formulário
+    //Coleta os dados do formulário
     const formData = new FormData(form);
     const dataPayload = Object.fromEntries(formData.entries());
 
-    // Converte os valores para números (o modelo de ML geralmente exige formato numérico)
     for (let key in dataPayload) {
         dataPayload[key] = parseFloat(dataPayload[key]);
     }
 
-    // 2. Altera estado da UI para "Carregando"
+    //Altera estado da UI para "Carregando"
     submitBtn.disabled = true;
     btnText.textContent = 'Analisando...';
     btnLoader.classList.remove('hidden');
     resultSection.classList.add('hidden');
 
     try {
-        // 3. Faz a requisição POST para o Back-end
+        //Faz a requisição POST para o Back-end
         const response = await fetch(API_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                // Necessário se houver validação de segurança/CORS configurada
                 'Accept': 'application/json' 
             },
             body: JSON.stringify(dataPayload)
@@ -44,13 +41,12 @@ document.getElementById('predictionForm').addEventListener('submit', async funct
 
         const result = await response.json();
         
-        showResult(result.situacao_academica); // Espera-se que a API retorne { "situacao_academica": "Graduate" }
+        showResult(result.situacao_academica); // API retorna { "situacao_academica": "Graduate" }
 
     } catch (error) {
         console.error('Erro ao realizar a predição:', error);
         alert('Falha ao conectar com o servidor. Verifique se a API está rodando.');
     } finally {
-        // 5. Restaura o estado do botão
         submitBtn.disabled = false;
         btnText.textContent = 'Realizar Predição';
         btnLoader.classList.add('hidden');
@@ -65,7 +61,6 @@ function showResult(predictionClass) {
     // Limpa classes anteriores
     badge.className = 'badge';
 
-    // Mapeia as classes do modelo para a UI
     if (predictionClass.toLowerCase() === 'graduate' || predictionClass === 1) {
         badge.textContent = 'Formado';
         badge.classList.add('graduate');

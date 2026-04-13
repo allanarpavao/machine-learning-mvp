@@ -1,6 +1,5 @@
-/* Variáveis de Tema */
 :root {
-    --primary-color: #0f4c81; /* Azul corporativo/escolar */
+    --primary-color: #0f4c81;
     --primary-hover: #0a365c;
     --bg-color: #f4f7f6;
     --card-bg: #ffffff;
@@ -8,10 +7,9 @@
     --text-muted: #666666;
     --border-color: #e0e0e0;
     
-    /* Cores das classes de predição */
-    --status-graduate: #28a745; /* Verde */
-    --status-dropout: #dc3545;  /* Vermelho */
-    --status-enrolled: #ffc107; /* Amarelo/Laranja */
+    --status-graduate: #28a745;
+    --status-dropout: #dc3545;
+    --status-enrolled: #ffc107;
 }
 
 * {
@@ -168,7 +166,7 @@ button {
 .badge.dropout { background-color: var(--status-dropout); }
 .badge.enrolled { background-color: var(--status-enrolled); color: #333; }
 
-/* Loader Simples */
+/* Loader */
 .loader {
     width: 20px;
     height: 20px;

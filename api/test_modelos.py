@@ -33,7 +33,8 @@ from sklearn.dummy import DummyClassifier
 
 def test_modelo_inadequado():
     """
-    Testa um modelo dummy para garantir que a nossa barreira de qualidade funciona.
+    Testa um modelo dummy para garantir que só modelos com valores
+    compatíveis funcionam
     """
     modelo_dummy = DummyClassifier(strategy="most_frequent")
     modelo_dummy.fit(X, y_true)

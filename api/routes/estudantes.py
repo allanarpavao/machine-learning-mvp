@@ -41,7 +41,6 @@ def predict_estudante(body: EstudanteSchema):
         estudante = Estudante(**dados_estudante)
         estudante.situacao_academica = resultado
 
-        # Persistência no banco de dados
         Session.add(estudante)
         Session.commit()
         return EstudanteViewSchema.model_validate(estudante).model_dump(), HTTPStatus.CREATED
