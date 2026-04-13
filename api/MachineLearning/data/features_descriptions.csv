@@ -18,8 +18,8 @@ Application order,int,1–9,Ordem de preferência do curso na candidatura
 Admission grade,float,95-190,Nota de Admissão
 Course,int,1–17,Curso em que o aluno está matriculado (código categórico)
 Daytime/evening attendance,int,0–1,Turno do curso (0=Noturno, 1=Diurno)
-Previous qualification,int,1–17,Qualificação anterior do aluno antes de ingressar (código categórico)
-Previous qualification (grade),float,95-190,Nota do curso curso anterior
+Previous qualification,int,1–17,Nível de escolaridade do aluno antes de ingressar (código categórico)
+Previous qualification (grade),float,95-190,Nota do curso anterior
 Curricular units 1st sem (credited),int,0–20,Disciplinas creditadas no 1º semestre
 Curricular units 1st sem (enrolled),int,0–26,Disciplinas matriculadas no 1º semestre
 Curricular units 1st sem (evaluations),int,0–45,Número de avaliações realizadas no 1º semestre

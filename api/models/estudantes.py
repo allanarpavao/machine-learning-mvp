@@ -40,7 +40,7 @@ class Estudante(Base):
     application_order: Mapped[int] = mapped_column(Integer, nullable=False, doc="Ordem de preferência na candidatura (1–9)")
     course: Mapped[int] = mapped_column(Integer, nullable=False, doc="Curso matriculado (1–17)")
     daytime_evening_attendance: Mapped[int] = mapped_column(Integer, nullable=False, doc="Turno do curso (0=Noturno, 1=Diurno)")
-    previous_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Qualificação anterior (1–17)")
+    previous_qualification: Mapped[int] = mapped_column(Integer, nullable=False, doc="Nível de escolaridade do aluno (1–17)")
     previous_qualification_grade: Mapped[float] = mapped_column(Float, nullable=False, doc="Nota do curso anterior")
     admission_grade: Mapped[float] = mapped_column(Float, nullable=False, doc="Nota de Admissão(95-190)")
     
