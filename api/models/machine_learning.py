@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 class Preprocessador:
-    def preparar_form(self, form):
+    def receber_form(self, form):
         """ Prepara os dados recebidos do front para serem usados no modelo.
         """
         
@@ -15,6 +15,7 @@ class Preprocessador:
 
         X_input = X_input.reshape(1, -1)
         return X_input
+
 
 class Pipeline:
     

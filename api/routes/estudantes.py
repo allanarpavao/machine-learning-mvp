@@ -2,6 +2,7 @@ from flask_openapi3 import APIBlueprint, Tag
 from http import HTTPStatus
 from sqlalchemy.exc import IntegrityError
 from flask import abort
+import pandas as pd
 
 from models.machine_learning import Pipeline, Preprocessador
 from models import Session
@@ -16,7 +17,6 @@ estudantes_bp = APIBlueprint(
     abp_tags=[Tag(name='Estudantes', description='Operações do estudante')]
 )
 
-
 # TODO: adicionar ErrorSchema
 # TODO: adicionar try/except para modelo de ML
 @estudantes_bp.post('/criar', responses={"201": EstudanteViewSchema})
@@ -26,7 +26,13 @@ def predict_estudante(body: EstudanteSchema):
     Recebe os atributos do aluno,
     salva no banco de dados e retorna a resposta do modelo.
     """
+    
+    dados_forms_em_dict = body.model_dump()
+    dados_em_dataframe = pd.DataFrame([dados_forms_em_dict])
+
+    breakpoint()
     # usa o modelo de machine learning
+    #TODO: Encapsular em funcao unica
     preprocessador = Preprocessador()
     dados_in = preprocessador.preparar_form(body)
     best_pipeline = Pipeline()
