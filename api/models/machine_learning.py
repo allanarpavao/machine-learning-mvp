@@ -1,5 +1,5 @@
+from sklearn.metrics import accuracy_score, f1_score, recall_score
 import pickle
-import pandas as pd
 import pickle
 import numpy as np
 from pathlib import Path
@@ -8,7 +8,6 @@ from pathlib import Path
 class Preprocessador:
     def preparar_form(self, form):
         """ Prepara os dados recebidos do front para serem usados no modelo.
-        
         """
         
         valores_em_lista = list(form.model_dump().values())
@@ -16,23 +15,6 @@ class Preprocessador:
 
         X_input = X_input.reshape(1, -1)
         return X_input
-
-# class Modelo:
-    
-#     def __init__(self):
-#         """Inicializa o modelo
-#         """
-#         self.model = None
-    
-#     def carrega_modelo(self, path):
-#         """Carrega o modelo construído
-#         """
-
-#         with open(path, 'rb') as file:
-#             self.model = pickle.load(file)
-       
-#         return self.model
-    
 
 class Pipeline:
     
@@ -67,6 +49,24 @@ class Pipeline:
             raise RuntimeError('O pipeline não foi carregado antes da predição.')
         
         return self.pipeline.predict_proba(X_input)
+
+
+class Avaliador:
+    def __init__(self):
+        pass
+
+    def avaliar_acuracia(self, modelo, X, y_true):
+        y_pred = modelo.preditor(X)
+        return accuracy_score(y_true, y_pred)
+        
+    def avaliar_recall(self, modelo, X, y_true):
+        y_pred = modelo.preditor(X)
+        return recall_score(y_true, y_pred, average='weighted')
+        
+    def avaliar_f1(self, modelo, X, y_true):
+        y_pred = modelo.preditor(X)
+        return f1_score(y_true, y_pred, average='weighted')
+
 
 
 ### Teste:
