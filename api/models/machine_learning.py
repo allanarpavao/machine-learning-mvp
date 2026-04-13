@@ -44,7 +44,8 @@ class Pipeline:
         return results
 
     def preditor_proba(self, X_input):
-        """ Retorna as probabilidades de cada classe. """
+        """Retorna as probabilidades de cada classe.
+        """
         if self.pipeline is None:
             raise RuntimeError('O pipeline não foi carregado antes da predição.')
         
