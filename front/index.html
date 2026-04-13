@@ -175,14 +175,20 @@
 
                 </div>
 
-                <button type="submit" class="btn-primary" id="submitBtn">
-                    <span id="btnText">Realizar Predição</span>
-                    <span id="btnLoader" class="loader hidden"></span>
-                </button>
+                <div class="button-group">
+                    <button type="submit" class="btn-primary" id="submitBtn">
+                        <span id="btnText">Realizar Predição</span>
+                        <span id="btnLoader" class="loader hidden"></span>
+                    </button>
+                    
+                    <button type="button" class="btn-secondary" onclick="preencherDadosTeste()">
+                        Preencher Dados Teste
+                    </button>
+                </div>
             </form>
         </section>
 
-        <!-- Seção de Resultado (Oculta por padrão) -->
+        <!-- Seção de Resultado -->
         <section id="resultSection" class="card result-section hidden">
             <h3>Resultado da Predição</h3>
             <div id="predictionBadge" class="badge"></div>

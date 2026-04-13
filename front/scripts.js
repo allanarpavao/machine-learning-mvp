@@ -67,7 +67,7 @@ function showResult(predictionClass) {
 
     // Mapeia as classes do modelo para a UI
     if (predictionClass.toLowerCase() === 'graduate' || predictionClass === 1) {
-        badge.textContent = 'Aprovado / Formado';
+        badge.textContent = 'Formado';
         badge.classList.add('graduate');
         message.textContent = 'Este aluno tem alta probabilidade de concluir o curso com sucesso.';
     } 
@@ -77,7 +77,7 @@ function showResult(predictionClass) {
         message.textContent = 'Atenção: Este aluno apresenta alto risco de abandonar o curso. Sugerimos intervenção pedagógica.';
     } 
     else {
-        badge.textContent = 'Matriculado (Regular)';
+        badge.textContent = 'Em Curso';
         badge.classList.add('enrolled');
         message.textContent = 'Aluno em progressão normal, requer acompanhamento padrão.';
     }
@@ -90,4 +90,53 @@ function resetForm() {
     document.getElementById('predictionForm').reset();
     document.getElementById('resultSection').classList.add('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Preencher com dados de teste
+const dadosPadraoSchema = {
+    father_qualification: 1,
+    mother_qualification: 1,
+    father_occupation: 1,
+    mother_occupation: 1,
+    education_special_needs: 0,
+    debtor: 0,
+    tuition_fees_up_to_date: 1,
+    scholarship_holder: 0,
+    marital_status: 1,
+    nationality: 1,
+    displaced: 1,
+    gender: 0,
+    age_at_enrollment: 19,
+    international: 0,
+    application_mode: 1,
+    application_order: 4,
+    course: 1,
+    daytime_evening_attendance: 1,
+    previous_qualification: 1,
+    previous_qualification_grade: 95.0,
+    admission_grade: 95.0,
+    curricular_units_1st_sem_credited: 0,
+    curricular_units_1st_sem_enrolled: 6,
+    curricular_units_1st_sem_evaluations: 8,
+    curricular_units_1st_sem_approved: 5,
+    curricular_units_1st_sem_grade: 14.333,
+    curricular_units_1st_sem_without_evaluations: 0,
+    curricular_units_2nd_sem_credited: 0,
+    curricular_units_2nd_sem_enrolled: 6,
+    curricular_units_2nd_sem_evaluations: 7,
+    curricular_units_2nd_sem_approved: 5,
+    curricular_units_2nd_sem_grade: 13.500,
+    curricular_units_2nd_sem_without_evaluations: 0
+};
+
+function preencherDadosTeste() {
+    for (const [chave, valor] of Object.entries(dadosPadraoSchema)) {
+        const input = document.getElementById(chave);
+        
+        if (input) {
+            input.value = valor;
+        } else {
+            console.warn(`Aviso: Input com id '${chave}' não foi encontrado no HTML.`);
+        }
+    }
 }
